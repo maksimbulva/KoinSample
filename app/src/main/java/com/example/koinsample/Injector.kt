@@ -18,6 +18,9 @@ fun initInjector() {
 
         // new instance will be created for each request (not necessary, just for this example)
         factory<WebService> { WebServiceImpl() }
+
+        single<Foo> { FooImpl(get()) }
+        single<Bar> { BarImpl(get()) }
     }
 
     val mainActivityModule = module {

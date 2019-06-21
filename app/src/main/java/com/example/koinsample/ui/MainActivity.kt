@@ -1,10 +1,12 @@
 package com.example.koinsample.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.example.koinsample.Foo
 import com.example.koinsample.R.id
 import com.example.koinsample.R.layout
 import com.example.koinsample.Repository
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     // For Activity "currentScope" property creates new scope (or returns already created) and bound it to
     // Lifecycle events: scope will be deleted on ON_DESTROY event.
     private val presenter: MainActivityPresenter by currentScope.inject()
+
+    private val foo: Foo by inject()
 
     private lateinit var textView: TextView
 
@@ -49,5 +53,7 @@ class MainActivity : AppCompatActivity() {
                     .commitNow()
             }
         }
+
+        Log.d("MyTest", foo.toString())
     }
 }
